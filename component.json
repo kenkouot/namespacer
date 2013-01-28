@@ -4,10 +4,8 @@
   , "description": "Convenience function for namespacing objects in your application"
   , "keywords": ["namespace", "utility", "structure"]
   , "dependencies": {}
-  , "development": {
-    "caolan/nodeunit": "*"
-  }
-  , "scripts": ["lib/namespacer.js", "test/namespacer-test.js"]
+  , "development": {}
+  , "scripts": ["lib/namespacer.js"]
   , "main": "lib/namespacer.js"
   , "styles": []
   , "license": "MIT"

@@ -45,14 +45,14 @@ exports['namespacer-test'] = {
     test.done();
   },
   'namespace string defined': function(test) {
+    namespacer('foo.bar', 'app', this.testObj);
     test.expect(2);
-    test.ok(typeof namespacer('foo.bar', 'app', this.testObj) === 'object', 'should be an object');
-    test.ok(typeof window.app === 'object', 'should be an object');
+    test.ok(typeof window.app.foo.bar === 'object', 'should be an object');
+    test.equal(window.app.foo.bar.baz, 'lur', 'baz should equal lur');
     test.done();
   },
   'check for properties': function(test) {
     namespacer('foo.bar', 'app', this.testObj);
-
     test.expect(4);
     test.ok(window.app.hasOwnProperty('foo'), 'should have app property');
 
@@ -61,6 +61,17 @@ exports['namespacer-test'] = {
     test.ok(foo.bar.hasOwnProperty('baz'), 'should have "baz" property');
     test.equal(foo.bar.baz, 'lur', 'foo.bar.baz should ==== "lur"');
 
+    test.done();
+  },
+  'multiple namespaces': function(test) {
+    namespacer('app.one.apple');
+    namespacer('two.orange', 'app');
+    test.expect(3);
+    test.ok(window.app.one.hasOwnProperty('apple'), 'should have apple');
+    test.ok(window.app.two.hasOwnProperty('orange'), 'should have apple');
+    test.throws(function(){
+      namespacer('app', undefined, {three: { pear: {}}});
+    }, Error, 'Uneccessary assignment, please specify more items in arg1 or a namespace in arg2');
     test.done();
   }
 };
