@@ -1,4 +1,3 @@
-
 # Namespacer
 
     Convenient utility function for application namespacing
@@ -17,8 +16,8 @@ namespacer('app.foo.bar');
 namespacer('foo.bar', 'app');
 
 // Or an object
-var app = window.app || {};`
-namespace('foo.bar', app);
+var app = window.app || {};
+namespacer('foo.bar', app);
 
 // Pass in a value aka app.foo.bar = { baz: 'lur' };
 namespacer('foo.bar', 'app', { baz: 'lur' });
