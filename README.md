@@ -9,13 +9,13 @@
 ## Example
 
 ```js
-// Initialize to {} with argument
+// Initialize to {} with a single argument
 namespacer('app.foo.bar');
 
-// Or do it with a string
+// Or explicitly declare your namespaces separately as the second argument
 namespacer('foo.bar', 'app');
 
-// Or an object
+// Or an instantiated object
 var app = window.app || {};
 namespacer('foo.bar', app);
 
